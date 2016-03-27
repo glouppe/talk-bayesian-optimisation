@@ -83,6 +83,17 @@ Gilles Louppe\\
 \end{frame}
 
 \begin{frame}
+    \frametitle{\color{red} Disclaimer}
+    \begin{center}
+        If you do not have these constraints, there is certainly a better optimisation algorithm than Bayesian optimisation.
+
+        \vspace{3em}
+
+        (e.g., L-BFGS-B, Powell's method (as in Minuit), etc)
+    \end{center}
+\end{frame}
+
+\begin{frame}
     \frametitle{Bayesian optimisation}
 
     for $t=1:T$,
@@ -99,7 +110,7 @@ Gilles Louppe\\
 
             \vspace{1em}
 
-        \item Optimise a cheap utility  function $u$ for sampling the next point.
+        \item Optimise a cheap utility  function $u$ based on the posterior for sampling the next point.
             $$x_{t+1} = \arg \max_x u(x)$$
             Exploit uncertainty to balance exploration against exploitation.
 
@@ -152,7 +163,7 @@ Gilles Louppe\\
     \frametitle{Plugging everything together ($t=0$)}
     \begin{center}
         \includegraphics[width=\textwidth]{code/fig4-0.pdf}\\
-        $x_{t+1} = \arg \max_{x} \text{u}(x)$
+        $x_{t+1} = \arg \max_{x} \text{UCB}(x)$
     \end{center}
 \end{frame}
 
@@ -192,13 +203,56 @@ Gilles Louppe\\
 \end{frame}
 
 \begin{frame}
-    \frametitle{Applications in HEP?}
-    % or model-based optimisation
+    \frametitle{Limitations}
+
+    \begin{itemize}
+        \item Bayesian optimisation has parameters itself!
+            \begin{itemize}
+                \item Choice of the kernel
+                \item Parameter wrapping
+                \item Initialization scheme
+            \end{itemize}
+
+        \vspace{1em}
+
+        \item Gaussian processes usually do not scale well to many observations and to high-dimensional data.
+            \begin{itemize}
+                \item Sequential model-based optimization provides a direct and effective alternative (i.e., replace GPs by a tree-based model).
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Applications}
+
+    \begin{itemize}
+        \item Bayesian optimization has been used in many scientific fields,
+        including robotics, machine learning or life sciences.
+
+        \vspace{1em}
+
+        \item Use cases for high energy physics?
+            \begin{itemize}
+                \item Optimisation of simulation parameters in event generators;
+                \item Optimisation of compiler flags to maximize execution speed;
+                \item Optimisation of hyper-parameters in machine learning for HEP;
+                \item ... ideas?
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Software}
+
+    
+
 \end{frame}
 
 \begin{frame}
     \frametitle{Summary}
-    % or model-based optimisation
+
+
+
 \end{frame}
 
 \end{document}
