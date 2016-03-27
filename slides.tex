@@ -58,24 +58,137 @@ Gilles Louppe\\
 
 \begin{frame}
     \frametitle{Problem statement}
-\end{frame}
 
-\begin{frame}
-    \frametitle{A generic optimisation algorithm}
-\end{frame}
+    \begin{center}
+        $$x^* = \arg \max_x f(x)$$
+    \end{center}
 
-\begin{frame}
-    \frametitle{Black box constraints}
+    \vspace{2em}
+
+    Constraints:
+    \begin{itemize}
+        \item $f$ is a black box for which no closed form is known;
+            \begin{itemize}
+                \item gradients $\frac{df}{dx}$ are not available.
+            \end{itemize}
+
+        \item $f$ is expensive to evaluate;
+
+        \item uncertainty on observations $y_i$ of $f$ (i.e., $y_i = f(x_i) + \epsilon_i$).
+    \end{itemize}
+
+    \vspace{2em}
+
+    Goal: find $x^*$ while minimizing the number of evaluations $f(x)$.
 \end{frame}
 
 \begin{frame}
     \frametitle{Bayesian optimisation}
-    % or model-based optimisation
+
+    for $t=1:T$,
+    \begin{enumerate}
+        \item Given observations $(x_i, y_i)$ for $i=1:t$, build a probabilistic model for the objective $f$;
+
+            \vspace{1em}
+
+        \item Compute the posterior predictive distribution;
+            \begin{itemize}
+                \item Integrate out all possible true functions, using
+                Gaussian process regression.
+            \end{itemize}
+
+            \vspace{1em}
+
+        \item Optimise a cheap utility  function $u$ for sampling the next point.
+            $$x_{t+1} = \arg \max_x u(x)$$
+            Exploit uncertainty to balance exploration against exploitation.
+
+        \item Sample the next observation $y_{t+1}$ at $x_{t+1}$.
+    \end{enumerate}
+
 \end{frame}
 
 \begin{frame}
-    \frametitle{Example}
-    % or model-based optimisation
+    \frametitle{Where shall we sample next?}
+
+    \begin{center}
+        \includegraphics[width=\textwidth]{code/fig1.pdf}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Build a probabilistic model for the objective function}
+    \begin{center}
+        \includegraphics[width=\textwidth]{code/fig2.pdf} \\
+        This gives a posterior distribution over functions that could have generated the observed data.
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Acquisition functions}
+
+    Acquisition functions $\text{u}(x)$ specify which sample $x$ should be tried next:
+
+    \begin{itemize}
+        \item Upper confidence bound
+            $\text{UCB}(x) = \mu_{GP}(x) + \kappa \sigma_{GP}(x)$;
+        \item Probability of improvement
+            $\text{PI}(x) = P(f(x) \geq f(x_t^+) + \kappa) $;
+        \item Expected improvement
+            $\text{EI}(x) = \mathbb{E} [f(x) - f(x_t^+)] $;
+        \item ... and many others.
+    \end{itemize}
+
+    where $x_t^+$ is the best point observed so far.
+
+    \vspace{1em}
+
+    In most cases, acquisition functions provide knobs (e.g., $\kappa$) for
+    controlling the exploration-exploitation trade-off.
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Plugging everything together ($t=0$)}
+    \begin{center}
+        \includegraphics[width=\textwidth]{code/fig4-0.pdf}\\
+        $x_{t+1} = \arg \max_{x} \text{u}(x)$
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{... and repeat until convergence ($t=1$)}
+    \begin{center}
+        \includegraphics[width=\textwidth]{code/fig4-1.pdf}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{... and repeat until convergence ($t=2$)}
+    \begin{center}
+        \includegraphics[width=\textwidth]{code/fig4-2.pdf}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{... and repeat until convergence ($t=3$)}
+    \begin{center}
+        \includegraphics[width=\textwidth]{code/fig4-3.pdf}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{... and repeat until convergence ($t=4$)}
+    \begin{center}
+        \includegraphics[width=\textwidth]{code/fig4-4.pdf}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{... and repeat until convergence ($t=5$)}
+    \begin{center}
+        \includegraphics[width=\textwidth]{code/fig4-5.pdf}
+    \end{center}
 \end{frame}
 
 \begin{frame}
