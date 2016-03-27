@@ -208,7 +208,7 @@ Gilles Louppe\\
     \begin{itemize}
         \item Bayesian optimisation has parameters itself!
             \begin{itemize}
-                \item Choice of the kernel
+                \item Choice of the kernel (i.e. design of the prior)
                 \item Parameter wrapping
                 \item Initialization scheme
             \end{itemize}
@@ -236,7 +236,7 @@ Gilles Louppe\\
                 \item Optimisation of simulation parameters in event generators;
                 \item Optimisation of compiler flags to maximize execution speed;
                 \item Optimisation of hyper-parameters in machine learning for HEP;
-                \item ... ideas?
+                \item ... let's discuss further ideas?
             \end{itemize}
     \end{itemize}
 \end{frame}
@@ -244,14 +244,37 @@ Gilles Louppe\\
 \begin{frame}
     \frametitle{Software}
 
-    
+    \begin{itemize}
+        \item Python
+        \begin{itemize}\scriptsize
+            \item Spearmint \url{https://github.com/JasperSnoek/spearmint}
+            \item GPyOpt \url{https://github.com/SheffieldML/GPyOpt}
+            \item RoBO \url{https://github.com/automl/RoBO}
+            \item scikit-optimize \url{https://github.com/MechCoder/scikit-optimize} (work in progress)
+        \end{itemize}
+
+        \item C++
+        \begin{itemize}\scriptsize
+            \item MOE \url{https://github.com/yelp/MOE}
+        \end{itemize}
+    \end{itemize}
 
 \end{frame}
 
 \begin{frame}
     \frametitle{Summary}
 
+    \begin{itemize}
+        \item Bayesian optimisation provides a principled approach for optimising an expensive function $f$;
 
+        \vspace{1em}
+
+        \item Often very effective, provided it is itself properly configured;
+
+        \vspace{1em}
+
+        \item Hot topic in machine learning research. Expect quick improvements!
+    \end{itemize}
 
 \end{frame}
 
