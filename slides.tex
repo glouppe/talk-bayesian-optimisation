@@ -156,6 +156,10 @@ Gilles Louppe\\
 
     In most cases, acquisition functions provide knobs (e.g., $\kappa$) for
     controlling the exploration-exploitation trade-off.
+        \begin{itemize}
+            \item Search in regions where $\mu_{GP}(x)$ is high (exploitation)
+            \item Probe regions where uncertainty $\sigma_{GP}(x)$ is high (exploration)
+        \end{itemize}
 
 \end{frame}
 
@@ -274,8 +278,18 @@ Gilles Louppe\\
         \vspace{1em}
 
         \item Hot topic in machine learning research. Expect quick improvements!
+
     \end{itemize}
 
+\end{frame}
+
+\begin{frame}[plain,noframenumbering]
+    \frametitle{References}
+    \nocite{brochu2010tutorial}
+    \nocite{shahriari2016taking}
+    {\footnotesize
+    \bibliographystyle{apalike}
+    \bibliography{biblio}}
 \end{frame}
 
 \end{document}
