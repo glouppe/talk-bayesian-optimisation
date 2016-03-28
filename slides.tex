@@ -74,12 +74,15 @@ Gilles Louppe\\
 
         \item $f$ is expensive to evaluate;
 
-        \item (optional) uncertainty on observations $y_i$ of $f$ (i.e., $y_i = f(x_i) + \epsilon_i$).
+        \item (optional) uncertainty on observations $y_i$ of $f$
+            \begin{itemize}
+                \item e.g., $y_i = f(x_i) + \epsilon_i$ because of Poisson fluctuations.
+            \end{itemize}
     \end{itemize}
 
     \vspace{2em}
 
-    Goal: find $x^*$ while minimizing the number of evaluations $f(x)$.
+    Goal: find $x^*$, while minimizing the number of evaluations $f(x)$.
 \end{frame}
 
 \begin{frame}
@@ -212,6 +215,7 @@ Gilles Louppe\\
     \begin{itemize}
         \item Bayesian optimisation has parameters itself!
             \begin{itemize}
+                \item Choice of the acquisition function
                 \item Choice of the kernel (i.e. design of the prior)
                 \item Parameter wrapping
                 \item Initialization scheme
