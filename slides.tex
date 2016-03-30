@@ -101,19 +101,13 @@ Gilles Louppe\\
 
     for $t=1:T$,
     \begin{enumerate}
-        \item Given observations $(x_i, y_i)$ for $i=1:t$, build a probabilistic model for the objective $f$;
+        \item Given observations $(x_i, y_i)$ for $i=1:t$, build a probabilistic model for the objective $f$.
+        \begin{itemize}
+            \item Integrate out all possible true functions, using
+            Gaussian process regression.
+        \end{itemize}
 
-            \vspace{1em}
-
-        \item Compute the posterior predictive distribution;
-            \begin{itemize}
-                \item Integrate out all possible true functions, using
-                Gaussian process regression.
-            \end{itemize}
-
-            \vspace{1em}
-
-        \item Optimise a cheap utility  function $u$ based on the posterior for sampling the next point.
+        \item Optimise a cheap utility  function $u$ based on the posterior distribution for sampling the next point.
             $$x_{t+1} = \arg \max_x u(x)$$
             Exploit uncertainty to balance exploration against exploitation.
 
