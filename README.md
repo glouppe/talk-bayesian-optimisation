@@ -1,5 +1,7 @@
 # talk-bayesian-optimisation
 
-Talk on "Bayesian optimisation" presented at CERN during the ATLAS ML workshop, March 2016.
+Talk on "Bayesian optimisation".
+- Presented at the ATLAS ML workshop, CERN, March 2016
+- Presented at the DIANA-HEP weekly meeting, CERN, April 2016
 
 See `code/` for reproducing the figures.
