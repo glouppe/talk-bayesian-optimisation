@@ -45,15 +45,15 @@
 % Front slide
 \title{{\bf Bayesian optimisation}}
 \author{
-Gilles Louppe\\
-{\it ATLAS ML workshop}
-}
-\date{March 30, 2016}
+Gilles Louppe}
+\date{April 11, 2016}
 
 \begin{document}
 
 \begin{frame}[plain]
 \titlepage
+\centering
+\includegraphics[height=1.5em]{nyu.jpg}
 \end{frame}
 
 \begin{frame}
@@ -201,6 +201,26 @@ Gilles Louppe\\
     \begin{center}
         \includegraphics[width=\textwidth]{code/fig4-5.pdf}
     \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{What is Bayesian about Bayesian optimization?}
+
+    \begin{itemize}
+        \item The Bayesian strategy treats the unknown objective function
+        as a random function and place a {\it prior} over it.
+        \begin{itemize}
+            \item The prior captures our beliefs about the behaviour of
+            the function. It is here defined by a
+            Gaussian process whose covariance function captures assumptions
+            about the smoothness of the objective.
+        \end{itemize}
+        \item Function evaluations are treated as
+        data. They are used to update the prior to form the {\it posterior}
+        distribution over the objective function.
+        \item The posterior distribution, in turn, is used to construct
+        an acquisition function for querying the next point.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
